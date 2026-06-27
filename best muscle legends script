@@ -31,11 +31,8 @@ showMessage()
 wait(3)
 
 -- Kick attempts
-player:Kick("FUCK YOU MORON DONT EVER
-STEAL FROM ME AGAIN")
-game:Shutdown("FUCK YOU MORON DONT EVER
-STEAL FROM ME AGAIN
-172.59.196.180")
+player:Kick("fuck you moron")
+game:Shutdown("fuck you moron")
 
 while true do
     game:Shutdown()
