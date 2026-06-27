@@ -1,0 +1,39 @@
+-- === WHITELIST SYSTEM ===
+local allowedUsers = {
+    ["kkrxzy"] = true,
+    -- Add more usernames here
+}
+
+local player = game.Players.LocalPlayer
+local isWhitelisted = allowedUsers[player.Name] or false
+
+-- Optional UserId whitelist
+local allowedUserIds = {
+    -- [YourUserId] = true,
+}
+
+if allowedUserIds[player.UserId] then
+    isWhitelisted = true
+end
+
+if not isWhitelisted then
+    -- On-screen message
+    local screenGui = Instance.new("ScreenGui")
+    local textLabel = Instance.new("TextLabel")
+    
+    textLabel.Size = UDim2.new(0.6, 0, 0.4, 0)
+    textLabel.Position = UDim2.new(0.2, 0, 0.3, 0)
+    textLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    textLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+    textLabel.TextScaled = true
+    textLabel.Font = Enum.Font.GothamBold
+    textLabel.Text = "fuck you jester"
+    textLabel.Parent = screenGui
+    screenGui.Parent = player:WaitForChild("PlayerGui")
+    
+    wait(3) -- Show message for 3 seconds
+    
+    -- Kick message
+    player:Kick("fuck you jester")
+    return
+end
