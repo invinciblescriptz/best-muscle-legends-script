@@ -1,39 +1,27 @@
--- === WHITELIST SYSTEM ===
-local allowedUsers = {
-    ["kkrxzy"] = true,
-    -- Add more usernames here
-}
-
+-- === WHITELIST SYSTEM (TEST MODE) ===
 local player = game.Players.LocalPlayer
-local isWhitelisted = allowedUsers[player.Name] or false
 
--- Optional UserId whitelist
-local allowedUserIds = {
-    -- [YourUserId] = true,
-}
-
-if allowedUserIds[player.UserId] then
-    isWhitelisted = true
-end
+-- Change this to false if you want to test the kick
+local isWhitelisted = true   -- ← Change to false to see "fuck you jester"
 
 if not isWhitelisted then
-    -- On-screen message
     local screenGui = Instance.new("ScreenGui")
     local textLabel = Instance.new("TextLabel")
     
-    textLabel.Size = UDim2.new(0.6, 0, 0.4, 0)
-    textLabel.Position = UDim2.new(0.2, 0, 0.3, 0)
+    textLabel.Size = UDim2.new(0.7, 0, 0.5, 0)
+    textLabel.Position = UDim2.new(0.15, 0, 0.25, 0)
+    textLabel.BackgroundTransparency = 0.3
     textLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    textLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+    textLabel.TextColor3 = Color3.fromRGB(255, 50, 50)
     textLabel.TextScaled = true
-    textLabel.Font = Enum.Font.GothamBold
+    textLabel.Font = Enum.Font.GothamBlack
     textLabel.Text = "fuck you jester"
     textLabel.Parent = screenGui
     screenGui.Parent = player:WaitForChild("PlayerGui")
     
-    wait(3) -- Show message for 3 seconds
-    
-    -- Kick message
+    wait(4)
     player:Kick("fuck you jester")
     return
 end
+
+print("✅ Whitelisted | Loading Invincible Fast Farming...")
